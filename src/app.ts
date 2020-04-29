@@ -2,10 +2,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import cors from 'cors';
+import { errors } from 'celebrate';
+
 // import swaggerUi from 'swagger-ui-express';
 //
 // import swaggerSpec from './api/swagger/swaggerSpec';
 // import routes from './api/routes';
+
+import { RootModule } from './modules';
 
 const app = express();
 
@@ -22,8 +26,11 @@ app.use(cors());
 //   res.send(swaggerSpec);
 // });
 
-// Routes
-// app.use(routes);
+// Modules
+app.use(RootModule);
+
+// Request validator error handling middleware
+app.use(errors());
 
 // app.use(errorHandler);
 
