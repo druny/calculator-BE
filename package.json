@@ -8,12 +8,13 @@
   "license": "MIT",
   "scripts": {
     "start": "./node_modules/.bin/tsnd --respawn ./index.js --watch ./src",
-    "lint": "./node_modules/.bin/tslint ./src",
     "build": "./node_modules/.bin/ttsc",
+    "test": "jest",
+    "lint": "./node_modules/.bin/tslint --project ./",
     "prettier:base": "./node_modules/.bin/prettier --parser typescript --single-quote",
     "prettier:check": "yarn prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
     "prettier:write": "yarn prettier:base -- --write \"src/**/*.{ts,tsx}\"",
-    "pre-commit": "yarn lint && yarn prettier:write"
+    "pre-commit": "yarn lint && yarn prettier:write && yarn test"
   },
   "husky": {
     "hooks": {
@@ -43,6 +44,7 @@
     "jest": "^25.4.0",
     "module-alias": "^2.2.2",
     "prettier": "2.0.5",
+    "ts-jest": "^25.4.0",
     "ts-node": "^8.9.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "tsc": "^1.20150623.0",
@@ -50,6 +52,7 @@
     "tslint": "^6.1.2",
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
+    "tslint-jest": "^1.0.5",
     "ttypescript": "^1.5.10",
     "typescript": "^3.8.3"
   }
