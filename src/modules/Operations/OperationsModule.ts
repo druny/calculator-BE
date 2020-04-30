@@ -1,9 +1,10 @@
 import express from 'express';
 
-import router from './router';
+import { OperationsRouter, OperationsHistoryRouter } from './router';
 
 const operationsModule = express();
 
-operationsModule.use(router);
+operationsModule.use(OperationsRouter);
+operationsModule.use(OperationsHistoryRouter);
 
 export default operationsModule;

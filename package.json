@@ -26,7 +26,7 @@
   "lint-staged": {
     "*.ts": [
       "prettier --write",
-      "tslint -c tslint.json project tsconfig.json"
+      "tslint -c tslint.json --project tsconfig.json"
     ]
   },
   "dependencies": {
@@ -36,8 +36,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
-    "source-map-support": "^0.5.19",
-    "swagger-ui-express": "^4.1.4"
+    "mongoose": "^5.9.10",
+    "source-map-support": "^0.5.19"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
@@ -46,8 +46,8 @@
     "@types/hapi__joi": "^16.0.12",
     "@types/helmet": "^0.0.46",
     "@types/jest": "^25.2.1",
+    "@types/mongoose": "^5.7.14",
     "@types/node": "^10.0.3",
-    "@types/swagger-ui-express": "^4.1.2",
     "@zerollup/ts-transform-paths": "^1.7.17",
     "husky": "^4.2.5",
     "jest": "^25.4.0",

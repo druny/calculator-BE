@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 
-import { Operations } from '@/services/Operations';
+import { OperationsInteractor } from '../interactor';
 
 export interface OperationsControllerInterface {
   plus: object;
@@ -9,37 +9,37 @@ export interface OperationsControllerInterface {
   divide: object;
 }
 
-const operations = new Operations();
+const operationsInteractor = new OperationsInteractor();
 
 export class OperationsController implements OperationsControllerInterface {
-  plus({ body }: Request, res: Response) {
+  async plus({ body }: Request, res: Response) {
     const { leftNumber, rightNumber } = body;
 
-    const result = operations.addition(leftNumber, rightNumber);
+    const result = await operationsInteractor.plus(leftNumber, rightNumber);
 
     res.json({ result });
   }
 
-  minus({ body }: Request, res: Response) {
+  async minus({ body }: Request, res: Response) {
     const { leftNumber, rightNumber } = body;
 
-    const result = operations.subtraction(leftNumber, rightNumber);
+    const result = await operationsInteractor.minus(leftNumber, rightNumber);
 
     res.json({ result });
   }
 
-  multiply({ body }: Request, res: Response) {
+  async multiply({ body }: Request, res: Response) {
     const { leftNumber, rightNumber } = body;
 
-    const result = operations.multiplication(leftNumber, rightNumber);
+    const result = await operationsInteractor.multiply(leftNumber, rightNumber);
 
     res.json({ result });
   }
 
-  divide({ body }: Request, res: Response) {
+  async divide({ body }: Request, res: Response) {
     const { leftNumber, rightNumber } = body;
 
-    const result = operations.division(leftNumber, rightNumber);
+    const result = await operationsInteractor.divide(leftNumber, rightNumber);
 
     res.json({ result });
   }
