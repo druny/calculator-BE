@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+#  server:
+#    build: .
+#    container_name: calculator-BE
+#    depends_on:
+#      - mongodb
+#    volumes:
+#      - server_logs:/usr/src/app/.logs
+#    restart: always
+#    tty: true
+#    env_file: .env
+#    expose:
+#      - 3000
+#    ports:
+#      - "3000:3000"
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    env_file: .env
+    volumes:
+      - mongodb_data_container:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  server_logs:
+  mongodb_data_container:
