@@ -3,6 +3,52 @@ import { Operations } from './Operations';
 const operations = new Operations();
 
 describe('Operations', () => {
+  describe('getFractionalLength', () => {
+    describe('Success', () => {
+      it('integer', () => {
+        expect.hasAssertions();
+
+        const result = Operations.getFractionalLength(1);
+
+        expect(result).toEqual(0);
+      });
+
+      it('decimal', () => {
+        expect.hasAssertions();
+
+        const result = Operations.getFractionalLength(1.5);
+
+        expect(result).toEqual(1);
+      });
+    });
+  });
+
+  describe('getPrecisionNumber', () => {
+    describe('Success', () => {
+      it('integer', () => {
+        expect.hasAssertions();
+
+        const leftNumber = 1;
+        const rightNumber = 2;
+
+        const result = Operations.getPrecisionNumber(leftNumber, rightNumber);
+
+        expect(result).toEqual(1);
+      });
+
+      it('decimal', () => {
+        expect.hasAssertions();
+
+        const leftNumber = 1.5;
+        const rightNumber = 2.12;
+
+        const result = Operations.getPrecisionNumber(leftNumber, rightNumber);
+
+        expect(result).toEqual(100);
+      });
+    });
+  });
+
   describe('sum', () => {
     it('Success', () => {
       expect.hasAssertions();
