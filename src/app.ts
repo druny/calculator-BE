@@ -4,12 +4,9 @@ import helmet from 'helmet';
 import cors from 'cors';
 import { errors } from 'celebrate';
 
-// import swaggerUi from 'swagger-ui-express';
-//
-// import swaggerSpec from './api/swagger/swaggerSpec';
-// import routes from './api/routes';
-
 import { RootModule } from './modules';
+
+import { MongooseConnect } from './services/DB';
 
 const app = express();
 
@@ -18,14 +15,6 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(helmet());
 app.use(cors());
 
-// Swagger
-// app.get('/', (req, res) => res.redirect('/docs'));
-// app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-// app.get('/swagger.json', (req, res) => {
-//   res.setHeader('Content-Type', 'application/json');
-//   res.send(swaggerSpec);
-// });
-
 // Modules
 app.use(RootModule);
 
@@ -33,5 +22,7 @@ app.use(RootModule);
 app.use(errors());
 
 // app.use(errorHandler);
+
+MongooseConnect();
 
 export default app;
