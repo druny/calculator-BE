@@ -15,7 +15,7 @@
     "prettier:check": "yarn prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
     "prettier:write": "yarn prettier:base -- --write \"src/**/*.{ts,tsx}\"",
     "pre-commit": "lint-staged && yarn prettier:write",
-    "pre-push": "yarn build --noEmit && yarn test"
+    "pre-push": "yarn build --noEmit && yarn test --lastCommit"
   },
   "husky": {
     "hooks": {
