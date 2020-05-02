@@ -17,7 +17,6 @@ export class OperationsHistoryRepository implements IOperationsHistoryRepository
   }
 
   create({ leftNumber, rightNumber, operation }: CreateType): Promise<IOperationsHistory> {
-    console.log(operation);
     return OperationsHistoryModel.create({ leftNumber, rightNumber, operation });
   }
 }
