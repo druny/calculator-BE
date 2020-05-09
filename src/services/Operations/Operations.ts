@@ -12,14 +12,10 @@ export class Operations implements OperationsInterface {
     return stringifiedNumber.includes('.') ? stringifiedNumber.split('.')[1].length : 0;
   }
 
-  static getPrecisionNumber(leftNumber: number, rightNumber: number): number {
+  static getPrecisionNumber(number: number): number {
     let precisionNumber: string = '1';
 
-    const fractionalLeftNumber = Operations.getFractionalLength(leftNumber);
-    const fractionalRightNumber = Operations.getFractionalLength(rightNumber);
-
-    const fractionalLength =
-      fractionalLeftNumber >= fractionalRightNumber ? fractionalLeftNumber : fractionalRightNumber;
+    const fractionalLength = Operations.getFractionalLength(number);
 
     for (let i = 0; i < fractionalLength; i += 1) {
       precisionNumber += 0;
@@ -29,38 +25,54 @@ export class Operations implements OperationsInterface {
   }
 
   addition(leftNumber: number, rightNumber: number): number {
-    const precisionNumber = Operations.getPrecisionNumber(leftNumber, rightNumber);
+    const leftPrecisionNumber = Operations.getPrecisionNumber(leftNumber);
+    const rightPrecisionNumber = Operations.getPrecisionNumber(rightNumber);
+
+    const commonFactor =
+      leftPrecisionNumber > rightPrecisionNumber ? leftPrecisionNumber : rightPrecisionNumber;
 
     return (
-      (Number(leftNumber) * precisionNumber + Number(rightNumber) * precisionNumber) /
-      precisionNumber
+      (Number(leftNumber) * leftPrecisionNumber + Number(rightNumber) * rightPrecisionNumber) /
+      commonFactor
     );
   }
 
   subtraction(leftNumber: number, rightNumber: number): number {
-    const precisionNumber = Operations.getPrecisionNumber(leftNumber, rightNumber);
+    const leftPrecisionNumber = Operations.getPrecisionNumber(leftNumber);
+    const rightPrecisionNumber = Operations.getPrecisionNumber(rightNumber);
+
+    const commonFactor =
+      leftPrecisionNumber > rightPrecisionNumber ? leftPrecisionNumber : rightPrecisionNumber;
 
     return (
-      (Number(leftNumber) * precisionNumber - Number(rightNumber) * precisionNumber) /
-      precisionNumber
+      (Number(leftNumber) * leftPrecisionNumber - Number(rightNumber) * rightPrecisionNumber) /
+      commonFactor
     );
   }
 
   multiplication(leftNumber: number, rightNumber: number): number {
-    const precisionNumber = Operations.getPrecisionNumber(leftNumber, rightNumber);
+    const leftPrecisionNumber = Operations.getPrecisionNumber(leftNumber);
+    const rightPrecisionNumber = Operations.getPrecisionNumber(rightNumber);
+
+    const commonFactor =
+      leftPrecisionNumber > rightPrecisionNumber ? leftPrecisionNumber : rightPrecisionNumber;
 
     return (
-      (Number(leftNumber) * precisionNumber * Number(rightNumber) * precisionNumber) /
-      precisionNumber
+      (Number(leftNumber) * leftPrecisionNumber * Number(rightNumber) * rightPrecisionNumber) /
+      commonFactor
     );
   }
 
   division(leftNumber: number, rightNumber: number): number {
-    const precisionNumber = Operations.getPrecisionNumber(leftNumber, rightNumber);
+    const leftPrecisionNumber = Operations.getPrecisionNumber(leftNumber);
+    const rightPrecisionNumber = Operations.getPrecisionNumber(rightNumber);
+
+    const commonFactor =
+      leftPrecisionNumber > rightPrecisionNumber ? leftPrecisionNumber : rightPrecisionNumber;
 
     return (
-      (((Number(leftNumber) * precisionNumber) / Number(rightNumber)) * precisionNumber) /
-      precisionNumber
+      (((Number(leftNumber) * leftPrecisionNumber) / Number(rightNumber)) * rightPrecisionNumber) /
+      commonFactor
     );
   }
 }

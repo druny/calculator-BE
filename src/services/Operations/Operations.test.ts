@@ -28,10 +28,9 @@ describe('Operations', () => {
       it('integer', () => {
         expect.hasAssertions();
 
-        const leftNumber = 1;
-        const rightNumber = 2;
+        const number = 1;
 
-        const result = Operations.getPrecisionNumber(leftNumber, rightNumber);
+        const result = Operations.getPrecisionNumber(number);
 
         expect(result).toEqual(1);
       });
@@ -39,10 +38,9 @@ describe('Operations', () => {
       it('decimal', () => {
         expect.hasAssertions();
 
-        const leftNumber = 1.5;
-        const rightNumber = 2.12;
+        const number = 2.12;
 
-        const result = Operations.getPrecisionNumber(leftNumber, rightNumber);
+        const result = Operations.getPrecisionNumber(number);
 
         expect(result).toEqual(100);
       });
